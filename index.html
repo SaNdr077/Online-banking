@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up and Log In</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--რეგისტრაცია ავტორიზაციის სექცია-->
+    <div id="regContainerMain">
+        <div id="regFormDiv" class="container">
+            <div id="signup">
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <label for="signupFullName">Full Name</label>
+                    <input type="text" id="signupFullName">
+                    <span id="fullNameError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail">
+                    <span id="emailError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword">
+                    <span id="passwordError" class="error-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="signupCardNumber">Card Number</label>
+                    <input type="text" id="signupCardNumber" maxlength="14" oninput="restrictCardNumberLength(this)">
+                    <span id="cardNumberError" class="error-message"></span>
+                </div>
+                <div id="form-group-flex" class="form-group">
+                    <div>
+                        <label for="signupCardDate">Card Expiry Date</label>
+                        <input type="text" id="signupCardDate" placeholder="MM/YY" maxlength="5" oninput="formatCardDate(this)">
+                        <span id="cardDateError" class="error-message"></span>
+                    </div>
+                    <div>
+                        <label for="signupCardType">Card Type</label>
+                        <select id="signupCardType">
+                            <option value="">Select Card Type</option>
+                            <option value="Visa">Visa</option>
+                            <option value="MasterCard">MasterCard</option>
+                        </select>
+                        <span id="cardTypeError" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button onclick="signUp()">Sign Up</button>
+                </div>
+                <a href="#" onclick="showLogin()">Already have an account? Log In</a>
+            </div>
+            <div id="login" style="display:none;">
+                <h2>Log In</h2>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail">
+                    <div class="error-message" id="loginEmailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword">
+                    <div class="error-message" id="loginPasswordError"></div>
+                </div>
+                <div class="form-group">
+                    <div class="error-message" id="loginGeneralError"></div>
+                    <button onclick="logIn()">Log In</button>
+                </div>
+                <a href="#" onclick="showSignUp()">Don't have an account? Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!--სისტემის სექცია-->
+    <main id="dashboardPage" style="display: none;">
+        <!--მენიუ-->
+        <button id="menuToggler"><img width="20" height="20" src="https://img.icons8.com/ios/20/menu--v1.png" alt="menu--v1"/></button>
+        <div id="dashboardMenu" style="display: none;">
+            <div>
+                <h3 id="heloo">Hello </h3><span id="userNameGreet"></span>
+                <nav>
+                    <ul>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/home--v1.png" alt="home--v1"/></span><a id="dashboardPageLink" href="#">Dashboard</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/20/external-contacts-twitter-flatart-icons-outline-flatarticons.png" alt="external-contacts-twitter-flatart-icons-outline-flatarticons"/></span><a id="contactPageLink" href="#">Contacts</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/bank-card-back-side--v1.png" alt="bank-card-back-side--v1"/></span><a id="card" href="#">Cards</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/external-creatype-outline-colourcreatype/20/external-dolar-miscellaneous-user-interface-v2-creatype-outline-colourcreatype.png" alt="external-dolar-miscellaneous-user-interface-v2-creatype-outline-colourcreatype"/></span><a id="loadPageLink" href="#">Loans</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <nav>
+                    <ul>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios-filled/20/logout-rounded-up.png" alt="logout-rounded-up"/></span><a id="logOut" href="#">Log Out</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/help--v1.png" alt="help--v1"/></span><a id="help" href="#">Get Help</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/?size=100&id=O6PlVpHecASW&format=png&color=000000" alt="settings--v1"/></span><a id="language" href="#">languages</a></li>
+                        <div id="settingsPage" style="display: none;">
+            <h3>Settings</h3>
+                    </ul>
+                </nav>
+            </div>
+            <div id="languageSelector">
+                <button class="btnlang" id="langEn">EN</button>
+                <button class="btnlang" id="langKa">GEO</button>
+                <button class="btnlang" id="langRu">RUS</button>
+            </div>
+        </div>
+       
+        <!--დეშბორდი-->
+        <div id="dashboardMainSection">
+            <div>
+                <h3>My Card</h3>
+                <div id="myCard">
+                    <div>
+                        <p>Name</p>
+                        <h5 id="cardHolder"></h5>
+                    </div>
+                    <div>
+                        <div>
+                            <h5 id="iban"></h5>
+                            <p id="cardDate"></p>
+                        </div>
+                        <div>
+                            <h3 id="cardType"></h3>
+                        </div>
+                    </div>
+                </div>
+                <form action="" id="sendMoney">
+                    <h3>Send Money</h3>
+                    <div id="custom-select-cards" class="custom-select">
+                        <div id="selectCardDiv"></div>
+                        <div class="options">
+                            <div class="option">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div id="inputDiv">
+                        <div>
+                            <label for="sendAmount">Enter the amount</label>
+                            <div>
+                                <span id="currencySymbol"></span>
+                                <input type="number" id="sendAmount" name="amount" min='1' max="10000" step="1" placeholder="0.00"/>
+                            </div>
+                        </div>
+                        <div id="currency">
+                            <span id="USD"><img width="28" height="28" src="https://img.icons8.com/color/28/usa-circular.png" alt="usa-circular"/></span>
+                            <span id="GEL"><img width="28" height="28" src="https://img.icons8.com/color/28/georgia-circular.png" alt="georgia-circular"/></span>
+                        </div>
+                    </div>
+                    <div id="custom-select-contacts" class="custom-select">
+                        <div id="selectContactDiv">Transfer to: <span><img width="16" height="16" src="https://img.icons8.com/tiny-color/16/add.png" alt="add"/></span></div>
+                        <div class="options">
+                            <input type="text" id="contactSearch" placeholder="Search..." />
+                            <div id="contactOptions">
+                                <div class="option">
+                                    <span>Nino Maghlakelidze</span>
+                                </div>
+                                <div class="option">
+                                    <span>Tamar Gumberidze</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="sendMoneyBtn">Send Money</button>
+                </form>
+            </div>
+            <div id="transactionsContainer">
+                <h3>Transactions</h3>
+                <div class="transactionsList" id="dashboardTransacList">
+                   
+                </div>
+            </div>
+        </div>
+
+        <!--კონტაქტები-->
+        <div id="contactPage" style="display: none;">
+            <h3>Contacts</h3>
+            <div class="content">
+                <div id="contactList" class="contact-list">
+                </div>
+
+                <button id="addContactBtn" class="add-contact-btn">Add Contact</button>
+
+                <div id="contactForm" class="contact-form">
+                    <h2>Add New Contact</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Enter full name" required>
+                    
+                    <label for="accountNumber">Account Number:</label>
+                    <input type="text" id="accountNumber" placeholder="Enter account number" required>
+                    
+                    <button id="submitContactBtn" class="submit-contact-btn">Add Contact</button>
+                </div>
+            </div>
+        </div>
+
+        <!--სესხები-->
+        <div id="loansPage" style="display: none;">
+            <h3>Loans</h3>
+            <div class="content">
+                <div class="loan-card" data-loan-id="1">
+                    <div>
+                        <img src="images/carcredit.jpeg" alt="Loan Image">
+                    </div>
+                    <div class="loan-info">
+                        <h2>30% ფასდაკლება</h2>
+                        <p>მოითხოვე ავტოლიზინგი და დაზოგე თანხა</p>
+                        <button class="loan-request-button">მოითხოვე</button>
+                    </div>
+                </div>
+                <div class="loan-card" data-loan-id="2">
+                    <div>
+                        <img src="images/istockphoto-1266251072-612x612.jpg" alt="Loan Image">
+                    </div>
+                    <div class="loan-info">
+                        <h2>20% ფასდაკლება</h2>
+                        <p>მოითხოვე სამომხმარებლო სესხი და დაზოგე თანხა</p>
+                        <button class="loan-request-button">მოითხოვე</button>
+                    </div>
+                </div>
+                <div class="loan-card" data-loan-id="3">
+                    <div>
+                        <img src="images/service2.webp" alt="Loan Image">
+                    </div>
+                    <div class="loan-info">
+                        <h2>10% ფასდაკლება</h2>
+                        <p>მოითხოვე ბიზნეს სესხი და დაზოგე თანხა</p>
+                        <button class="loan-request-button">მოითხოვე</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--სესხების მოდალი-->
+        <div id="loanModal" class="modal">
+            <p>ნამდვილად გსურთ სესხის დამტკიცება?</p>
+            <label for="loanAmount">რა ოდენობის თანხა გსურთ:</label>
+            <div class="input-group">
+                <input type="number" id="loanAmount" name="loanAmount" min="1" step="0.01" required>
+                <select id="currency" name="currency" required>
+                    <option value="GEL">ლარი (GEL)</option>
+                    <option value="USD">დოლარი (USD)</option>
+                    <option value="EUR">ევრო (EUR)</option>
+                </select>
+            </div>
+            <br><br>
+            <button id="confirmLoan">დადასტურება</button>
+            <button id="cancelLoan">გაუქმება</button>
+        </div>
+        <div id="overlay" class="overlay"></div>
+
+        <!-- help -->
+        <div id="headhelpdiv">
+            <header class="headhelp">
+                <div id="containerhelp">
+                    <h1 id="title">Online Banking Help Center</h1>
+                    <p id="subtitle">Find answers to your questions below.</p>
+                </div>
+            </header>
+    
+            <section class="help-section">
+                <div class="container">
+                    <h2 id="gettingStarted">Getting Started</h2>
+                    <ul>
+                        <li>
+                            <h3 id="loginTitle">How do I log in?</h3>
+                            <p><a id="RegistrationPage" href="#">Login Page</a>, <span id="loginInstruction">enter your username and password, and follow the login steps.</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+    
+            <section class="help-section">
+                <div class="container">
+                    <h2 id="managingAccount">Managing Your Account</h2>
+                    <ul>
+                        <li>
+                            <h3 id="checkBalanceTitle">How can I check my account balance?</h3>
+                            <p id="checkBalanceInstruction">Log in and go to the "Accounts" tab to view your current balance and recent transactions.</p>
+                        </li>
+                        <li>
+                            <h3 id="transferMoneyTitle">How do I transfer money between accounts?</h3>
+                            <p id="transferMoneyInstruction">Navigate to the "Transfers" section, select the accounts, and complete the transaction.</p>
+                        </li>
+                        <li>
+                            <h3 id="payBillsTitle">How do I pay bills online?</h3>
+                            <p id="payBillsInstruction">Go to the "Bill Pay" section, enter the bill details, and submit your payment.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+    
+            <section class="help-section">
+                <div class="containerdiv">
+                    <h2 id="securityPrivacy">Security and Privacy</h2>
+                    <ul>
+                        <li>
+                            <h3 id="enable2faTitle">How do I enable two-factor authentication (2FA)?</h3>
+                            <p id="enable2faInstruction">Go to "Security Settings" and follow the steps to enable 2FA for added security.</p>
+                        </li>
+                        <li>
+                            <h3 id="updateContactTitle">How do I update my contact information?</h3>
+                            <p id="updateContactInstruction">Go to "Profile", update your contact details, and save the changes.</p>
+                        </li>
+                        <li>
+                            <h3 id="fraudulentActivityTitle">What should I do if I suspect fraudulent activity?</h3>
+                            <p id="fraudulentActivityInstruction">Contact support immediately and review your recent transactions.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+    
+            <section class="help-section">
+                <div class="container">
+                    <h2 id="technicalSupport">Technical Support</h2>
+                    <ul>
+                        <li>
+                            <h3 id="cantLoginTitle">Why can’t I log in?</h3>
+                            <p id="cantLoginInstruction">Check your username, password, and internet connection. If the issue persists, contact support.</p>
+                        </li>
+                        <li>
+                            <h3 id="pageLoadTitle">What if the page doesn’t load?</h3>
+                            <p id="pageLoadInstruction">Try refreshing the page or switching browsers. Clear your browser cache if needed.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

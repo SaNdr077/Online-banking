@@ -1,0 +1,885 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+#regContainerMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#regContainerMain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(images/ibrahim-boran-_aUwE2DnIPg-unsplash.jpg);
+    background-repeat: repeat-x;
+    background-position: center center;
+    z-index: -1;
+    animation: moveBackground 25s linear infinite;
+    animation-play-state: running;
+}
+
+#regContainerMain.paused::before {
+    animation-play-state: paused;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0; /* Start from left */
+    }
+    100% {
+        background-position: 100% 0; /* Move fully to the right */
+    }
+}
+
+.container {
+    margin: 15px;
+    border-radius: 8px;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    border:  1px solid black;
+    border-radius: 5px;
+    height: 35px;
+}
+
+.form-group select {
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0177FB;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.form-group button:hover {
+    background-color: #0176fbd7;
+}
+
+.form-group a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #0177FB;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+#form-group-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+#dashboardMenu {
+    width: 17%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 2px solid #0066ff45;
+    padding: 70px 50px 30px 50px;
+    z-index: 100;
+    background-color: white;
+}
+
+main > div:nth-child(2) {
+    height: 100%;
+    padding: 50px;
+}
+
+#dashboardMenu h3 {
+    color: #0066ff;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #0066ff;
+}
+
+nav ul li span {
+    display: flex;
+    align-items: center;
+    margin-right: 13px;
+}
+
+.transactionsList {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.transactionsList p {
+    display: grid;
+    grid-template-columns: 0.1fr 0.3fr 0.2fr 0.2fr 0.2fr 0.2fr;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+@media (max-width: 740px) {
+    .transactionsList p {
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto;
+        row-gap: 10px;
+    }
+
+    .transactionsList p > *:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .transactionsList p > *:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .transactionsList p > *:nth-child(3) {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .transactionsList p > *:nth-child(5) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .transactionsList p > *:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .transactionsList p > *:nth-child(6) {
+        grid-column: 3;
+        grid-row: 2;
+    }
+}
+
+/* ენის შეცვლა */
+#languageSelector{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    position: absolute;
+    bottom: 0px;
+    left: 170px;
+    display: none;
+}
+.btnlang{
+    border: none;
+    width: 40px;
+    background-color: #0066ff;
+    font-size: 1rem;
+    opacity: 85%;
+    margin: 2px;
+    cursor: pointer;
+    
+}
+
+.contactImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: rgb(255, 128, 0);
+    color: white;
+}
+
+.transacStatus {
+    padding: 5px 15px;
+    border-radius: 7px;
+}
+
+#myCard {
+    width: 253px;
+    height: 147px;
+    border-radius: 10px;
+    background-color: #0177FB;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 20px;
+    color: white;
+    margin: 20px 0px;
+}
+
+#myCard div {
+    width: 100%;
+}
+
+#myCard div:nth-child(2){
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#cardType {
+    width: 100%;
+    text-align: end;
+}
+
+#sendMoney, #sendMoney h1, #custom-select, #inputDiv, button {
+    width: 253px;
+}
+
+#userNameGreet{
+    font-size: 1.2rem;
+    color: #0177FB;
+    display: inline;
+    font-weight: 600;
+}
+
+#heloo{
+    display: inline;
+    padding: 5px;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+    height: 43px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 1px 1px 8px #A4B4CB;
+}
+
+#selectCardDiv, #selectContactDiv {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.options {
+    position: absolute;
+    top: 95%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    z-index: 10;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+}
+
+.option {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #f0f0f0;
+}
+
+.show-options .options {
+    max-height: 200px;
+}
+
+#inputDiv {
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px #A4B4CB;
+    margin: 20px 0px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+label[for="sendAmount"] {
+    font-size: 15px;
+}
+
+#inputDiv div:nth-child(1){
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#inputDiv div:nth-child(1) div{
+    display: flex;
+    align-items: center;
+}
+
+#inputDiv input {
+    width: 150px;
+    border: none;
+    font-size: 20px;
+}
+
+#currency {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#currency span {
+    cursor: pointer;
+}
+
+#sendMoney button {
+    width: 100%;
+    height: 43.88px;
+    border-radius: 8px;
+    margin: 23px 0px;
+    background-color: #0177FB;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#sendMoney button:hover {
+    background-color: #0176fbd7;
+}
+
+#custom-select-cards, #inputDiv, #custom-select-contacts {
+    background-color: white;
+}
+
+#dashboardMainSection {
+    width: 100%;
+    padding: 70px 30px;
+    display: flex;
+    height: 100%;
+    background-color: #00c8ff08;
+}
+
+@media (max-width: 950px) {
+    #dashboardMainSection {
+        flex-direction: column;
+    }
+
+    #dashboardMainSection > div:nth-child(2) {
+        padding-left: 0px;
+    }
+}
+
+#transactionsContainer {
+    padding-left: 30px;
+    width: 100%;
+}
+
+#dashboardTransacList {
+    height: 100%;
+    padding: 0px;
+    padding-bottom: 20px;
+    overflow-y: auto;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px 0px;
+}
+
+.content h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.loan-card {
+    height: auto;
+    background-color: #ade8f4c4;
+    border-radius: 12px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 30px;
+}
+
+@media (max-width: 630px) {
+    .loan-card {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loan-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.loan-card div {
+    height: 100%;
+    object-fit: cover;
+}
+
+.loan-card img {
+    width: 290px;
+    height: 100%;
+    margin-right: 20px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.loan-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.loan-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.loan-info {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.loan-info button {
+    width: 50%; 
+    background-color: #023e8a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.loan-info button:hover {
+    background-color: #0052cc;
+}
+
+.content p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.contact .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffcccb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.contact span {
+    color: #333;
+}
+
+#cardType {
+    text-transform: uppercase;
+}
+
+#contactSearch {
+    width: 100%;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px;
+}
+
+#contactPage, #loansPage {
+    padding: 70px 30px;
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.modal p {
+    margin: 0 0 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.modal input[type="number"] {
+    width: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #c8c5c5;
+    font-size: 16px;
+}
+
+.modal button {
+    width: 48%;
+    padding: 10px ;
+    background-color: #0e6bf6;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: #183c74;
+}
+
+.modal button:last-child {
+    margin-right: 0;
+    background-color: #ccc;
+}
+
+.modal button:last-child:hover {
+    background-color: #999;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 26, 26, 0.5);
+    z-index: 999;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group select {
+    width: 30%;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #a8a7a7;
+    font-size: 13,5px;
+    margin-top: -20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#contactPage {
+    background-image: url('images/guerrillabuzz-vZnlrOgRGlc-unsplash.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center center;
+}
+
+.contact-list {
+    margin-bottom: 20px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    position: relative; /* Ensure the delete button is positioned relative to the card */
+}
+
+.contact-initials {
+    background-color: #add8e6;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    margin-right: 15px;
+}
+.contact-info {
+    flex-grow: 1;
+}
+
+.contact-info p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.add-contact-btn {
+    background-color: #0066ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-contact-btn:hover {
+    background-color: #0052cc;
+}
+
+.contact-form {
+    display: none;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(151, 38, 38, 0.1);
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-contact-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-contact-btn {
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+    position: absolute;
+    right: 15px;
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+#menuToggler {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 50px;
+    padding: 10px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#dashboardPage {
+    position: relative;
+}
+
+/* help */
+#headhelpdiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    display: none;
+}
+
+
+.containerdiv {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.headhelp {
+    background-color: #0056b3;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.headhelp h1 {
+    margin-bottom: 10px;
+}
+
+.headhelp p {
+    font-size: 1.1em;
+}
+
+
+.help-section {
+    background-color: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.help-section h2 {
+    font-size: 1.8em;
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.help-section ul {
+    list-style-type: none;
+}
+
+.help-section li {
+    margin-bottom: 20px;
+}
+
+.help-section li h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.help-section li p {
+    font-size: 1em;
+}
+
+.help-section li a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.help-section li a:hover {
+    text-decoration: underline;
+}
