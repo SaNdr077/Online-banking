@@ -236,8 +236,8 @@
 
         <!--სესხების მოდალი-->
         <div id="loanModal" class="modal">
-            <p>ნამდვილად გსურთ სესხის დამტკიცება?</p>
-            <label for="loanAmount">რა ოდენობის თანხა გსურთ:</label>
+            <p id="approved">Are you sure you want to get the loan approved?</p>
+            <label id="muchMoney" for="muchMoney">How much money do you want:</label>
             <div class="input-group">
                 <input type="number" id="loanAmount" name="loanAmount" min="1" step="0.01" required>
                 <select id="currency" name="currency" required>
@@ -247,8 +247,8 @@
                 </select>
             </div>
             <br><br>
-            <button id="confirmLoan">დადასტურება</button>
-            <button id="cancelLoan">გაუქმება</button>
+            <button id="confirmLoan">Apple</button>
+            <button id="cancelLoan">Cancel</button>
         </div>
         <div id="overlay" class="overlay"></div>
 

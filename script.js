@@ -687,7 +687,8 @@ const translations = {
         autoLeasing: 'Ask for auto leasing and save money',
         consumer: 'Apply for a consumer loan and save money',
         business: 'Apply for a business loan and save money',
-
+        approved: 'Are you sure you want to get the loan approved?',
+        muchMoney: 'How much money do you want:',
         applyForLoan: 'Apply',
         confirmLoan: 'Confirm',
         cancelLoan: 'Cancel',
@@ -745,6 +746,8 @@ const translations = {
         autoLeasing: 'მოითხოვე ავტოლიზინგი და დაზოგე თანხა',
         consumer: 'მოითხოვე სამომხმარებლო სესხი და დაზოგე თანხა',
         business: 'მოითხოვე ბიზნეს სესხი და დაზოგე თანხა',
+        approved: 'ნამდვილად გსურთ სესხის დამტკიცება?',
+        muchMoney: 'რა ოდენობის თანხა გსურთ:',
         applyForLoan: 'მოითხოვე',
         confirmLoan: 'დადასტურება',
         cancelLoan: 'გაუქმება',
@@ -802,6 +805,8 @@ const translations = {
         autoLeasing: 'Закажите автолизинг и сэкономьте деньги',
         consumer: 'Оформите потребительский кредит и сэкономьте деньги',
         business: 'Подайте заявку на бизнес-кредит и сэкономьте деньги',
+        approved: 'Вы уверены, что хотите получить одобрение по кредиту?',
+        muchMoney: 'Сколько денег вы хотите:',
         applyForLoan: 'Подать заявку',
         confirmLoan: 'Подтвердить',
         cancelLoan: 'Отменить',
@@ -863,6 +868,8 @@ function setLanguage(lang) {
     document.getElementById('autoLeasing').textContent = translations[lang].autoLeasing;
     document.getElementById('consumer').textContent = translations[lang].consumer;
     document.getElementById('business').textContent = translations[lang].business;
+    document.getElementById('approved').textContent = translations[lang].approved;
+    document.getElementById('muchMoney').textContent = translations[lang].muchMoney;
     document.querySelectorAll('.loan-card .loan-request-button')[0].textContent = translations[lang].applyForLoan;
     document.querySelectorAll('.loan-card .loan-request-button')[1].textContent = translations[lang].applyForLoan;
     document.querySelectorAll('.loan-card .loan-request-button')[2].textContent = translations[lang].applyForLoan;
