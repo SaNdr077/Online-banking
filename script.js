@@ -649,6 +649,7 @@ const headHelpdDiv = document.getElementById('headhelpdiv')
 help.addEventListener('click', function(){
     dashboardMainSection.style.display = 'none';
     headHelpdDiv.style.display = 'flex'
+    loansPage.style.display = 'none';
 })
 
 const RegistrationPage = document.getElementById('RegistrationPage')
@@ -683,6 +684,10 @@ const translations = {
         loanDiscount30: '30% Discount',
         loanDiscount20: '20% Discount',
         loanDiscount10: '10% Discount',
+        autoLeasing: 'Ask for auto leasing and save money',
+        consumer: 'Apply for a consumer loan and save money',
+        business: 'Apply for a business loan and save money',
+
         applyForLoan: 'Apply',
         confirmLoan: 'Confirm',
         cancelLoan: 'Cancel',
@@ -737,6 +742,9 @@ const translations = {
         loanDiscount30: '30% ფასდაკლება',
         loanDiscount20: '20% ფასდაკლება',
         loanDiscount10: '10% ფასდაკლება',
+        autoLeasing: 'მოითხოვე ავტოლიზინგი და დაზოგე თანხა',
+        consumer: 'მოითხოვე სამომხმარებლო სესხი და დაზოგე თანხა',
+        business: 'მოითხოვე ბიზნეს სესხი და დაზოგე თანხა',
         applyForLoan: 'მოითხოვე',
         confirmLoan: 'დადასტურება',
         cancelLoan: 'გაუქმება',
@@ -791,6 +799,9 @@ const translations = {
         loanDiscount30: '30% скидка',
         loanDiscount20: '20% скидка',
         loanDiscount10: '10% скидка',
+        autoLeasing: 'Закажите автолизинг и сэкономьте деньги',
+        consumer: 'Оформите потребительский кредит и сэкономьте деньги',
+        business: 'Подайте заявку на бизнес-кредит и сэкономьте деньги',
         applyForLoan: 'Подать заявку',
         confirmLoan: 'Подтвердить',
         cancelLoan: 'Отменить',
@@ -849,6 +860,9 @@ function setLanguage(lang) {
     document.querySelectorAll('.loan-card .loan-info h2')[0].textContent = translations[lang].loanDiscount30;
     document.querySelectorAll('.loan-card .loan-info h2')[1].textContent = translations[lang].loanDiscount20;
     document.querySelectorAll('.loan-card .loan-info h2')[2].textContent = translations[lang].loanDiscount10;
+    document.getElementById('autoLeasing').textContent = translations[lang].autoLeasing;
+    document.getElementById('consumer').textContent = translations[lang].consumer;
+    document.getElementById('business').textContent = translations[lang].business;
     document.querySelectorAll('.loan-card .loan-request-button')[0].textContent = translations[lang].applyForLoan;
     document.querySelectorAll('.loan-card .loan-request-button')[1].textContent = translations[lang].applyForLoan;
     document.querySelectorAll('.loan-card .loan-request-button')[2].textContent = translations[lang].applyForLoan;
