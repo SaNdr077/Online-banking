@@ -78,24 +78,24 @@
     <main id="dashboardPage" style="display: none;">
         <!--მენიუ-->
         <button id="menuToggler"><img width="20" height="20" src="https://img.icons8.com/ios/20/menu--v1.png" alt="menu--v1"/></button>
+        <img id="logo" src="images/logo-iako.png" alt="logo">
         <div id="dashboardMenu" style="display: none;">
             <div>
                 <h3 id="heloo">Hello </h3><span id="userNameGreet"></span>
                 <nav>
                     <ul>
-                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/home--v1.png" alt="home--v1"/></span><a id="dashboardPageLink" href="#">Dashboard</a></li>
-                        <li><span><img width="20" height="20" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/20/external-contacts-twitter-flatart-icons-outline-flatarticons.png" alt="external-contacts-twitter-flatart-icons-outline-flatarticons"/></span><a id="contactPageLink" href="#">Contacts</a></li>
-                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/bank-card-back-side--v1.png" alt="bank-card-back-side--v1"/></span><a id="card" href="#">Cards</a></li>
-                        <li><span><img width="20" height="20" src="https://img.icons8.com/external-creatype-outline-colourcreatype/20/external-dolar-miscellaneous-user-interface-v2-creatype-outline-colourcreatype.png" alt="external-dolar-miscellaneous-user-interface-v2-creatype-outline-colourcreatype"/></span><a id="loadPageLink" href="#">Loans</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/home--v1.png" alt="home--v1"/></span><a class="nav-link" id="dashboardPageLink" href="#">Dashboard</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/20/external-contacts-twitter-flatart-icons-outline-flatarticons.png" alt="external-contacts-twitter-flatart-icons-outline-flatarticons"/></span><a class="nav-link" id="contactPageLink" href="#">Contacts</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/external-creatype-outline-colourcreatype/20/external-dolar-miscellaneous-user-interface-v2-creatype-outline-colourcreatype.png" alt="external-dolar-miscellaneous-user-interface-v2-creatype-outline-colourcreatype"/></span><a class="nav-link" id="loadPageLink" href="#">Loans</a></li>
                     </ul>
                 </nav>
             </div>
             <div>
                 <nav>
                     <ul>
-                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios-filled/20/logout-rounded-up.png" alt="logout-rounded-up"/></span><a id="logOut" href="#">Log Out</a></li>
-                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/help--v1.png" alt="help--v1"/></span><a id="help" href="#">Get Help</a></li>
-                        <li><span><img width="20" height="20" src="https://img.icons8.com/?size=100&id=O6PlVpHecASW&format=png&color=000000" alt="settings--v1"/></span><a id="language" href="#">languages</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios-filled/20/logout-rounded-up.png" alt="logout-rounded-up"/></span><a class="nav-link" id="logOut" href="#">Log Out</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/ios/20/help--v1.png" alt="help--v1"/></span><a class="nav-link" id="help" href="#">Get Help</a></li>
+                        <li><span><img width="20" height="20" src="https://img.icons8.com/?size=100&id=O6PlVpHecASW&format=png&color=000000" alt="settings--v1"/></span><a class="nav-link" id="language" href="#">languages</a></li>
                         <div id="settingsPage" style="display: none;">
             <h3>Settings</h3>
                     </ul>
@@ -110,20 +110,22 @@
        
         <!--დეშბორდი-->
         <div id="dashboardMainSection">
-            <div>
-                <h3>My Card</h3>
-                <div id="myCard">
-                    <div>
-                        <p>Name</p>
-                        <h5 id="cardHolder"></h5>
-                    </div>
-                    <div>
+            <div id="makeTransaction">
+                <div>
+                    <h3 id="cardTr">My Card</h3>
+                    <div id="myCard">
                         <div>
-                            <h5 id="iban"></h5>
-                            <p id="cardDate"></p>
+                            <p>Name</p>
+                            <h5 id="cardHolder"></h5>
                         </div>
                         <div>
-                            <h3 id="cardType"></h3>
+                            <div>
+                                <h5 id="iban"></h5>
+                                <p id="cardDate"></p>
+                            </div>
+                            <div>
+                                <h3 id="cardType"></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -155,12 +157,6 @@
                         <div class="options">
                             <input type="text" id="contactSearch" placeholder="Search..." />
                             <div id="contactOptions">
-                                <div class="option">
-                                    <span>Nino Maghlakelidze</span>
-                                </div>
-                                <div class="option">
-                                    <span>Tamar Gumberidze</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -236,8 +232,8 @@
 
         <!--სესხების მოდალი-->
         <div id="loanModal" class="modal">
-            <p id="approved">Are you sure you want to get the loan approved?</p>
-            <label id="muchMoney" for="muchMoney">How much money do you want:</label>
+            <p>ნამდვილად გსურთ სესხის დამტკიცება?</p>
+            <label for="loanAmount">რა ოდენობის თანხა გსურთ:</label>
             <div class="input-group">
                 <input type="number" id="loanAmount" name="loanAmount" min="1" step="0.01" required>
                 <select id="currency" name="currency" required>
@@ -247,8 +243,8 @@
                 </select>
             </div>
             <br><br>
-            <button id="confirmLoan">Apple</button>
-            <button id="cancelLoan">Cancel</button>
+            <button id="confirmLoan">დადასტურება</button>
+            <button id="cancelLoan">გაუქმება</button>
         </div>
         <div id="overlay" class="overlay"></div>
 
